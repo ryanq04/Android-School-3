@@ -1,0 +1,150 @@
+
+/**
+ * Write a description of class Droid here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
+public class Droid
+{
+    // instance fields
+    int batteryLevel, batteryCharged;
+    String stars = "********************"; //To create sections in the terminal separating the text
+    
+    
+    /**
+     * Constructor for objects of class Droid
+     */
+    public Droid()
+    {
+        // initialise instance variables
+        
+        batteryLevel = 100;
+        
+    }
+
+    
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
+     */
+    public void activate()
+    {
+        // put your code here
+        System.out.println("Drone has activated! Please enter your instructions.");
+        batteryLevel = batteryLevel - 3;
+        System.out.println("Your battery level is " + batteryLevel + " percent.");
+    }//End of activate method
+    
+    
+    public void chargeBattery(int hours){
+        
+        
+        System.out.println("Droid is charging for " + hours + " hour(s).");
+        batteryCharged = hours * 15;
+        batteryLevel = batteryCharged + batteryLevel;
+        
+        
+        if (batteryLevel > 100){
+            
+            batteryLevel = 100;
+        
+            System.out.println("Your battery level is " + batteryLevel + " percent.");
+            
+            
+        } else {
+            
+            System.out.println("Your battery level is " + batteryLevel + " percent.");
+        }//End of if else statement
+     
+        
+        
+    
+    }
+    
+    
+    public int checkBattery(){
+        System.out.println("Your battery level is " + batteryLevel + " percent.");
+        return batteryLevel;
+    }
+    
+    
+    public int drainBattery(int drain){
+        batteryLevel = batteryLevel - drain;
+        System.out.println("Your battery level is " + batteryLevel + " percent.");
+        return batteryLevel;
+        
+    }
+    
+    public void clear(){
+        System.out.println("\f"); 
+        System.out.flush();
+    }
+    
+    public void hover(int feet){
+        if (feet > 3){
+            feet = 3;
+            System.out.println("Error. Drone heigh cannot exceed 3 feet. Height limit reached.");
+            
+        } else {
+            switch(feet){
+                
+                
+                case 0:
+                    System.out.println("Droid is hovering 0 ft.");
+                    drainBattery(5);
+                    
+                    break;
+                    
+                case 1: 
+                    System.out.println("Droid is hovering 1 ft.");
+                    drainBattery(15);
+                    
+                    break;
+                    
+                case 2:
+                    System.out.println("Droid is hovering 2 ft.");
+                    drainBattery(25);
+                    
+                    break;
+                    
+                case '3':
+                    System.out.println("Droid is hovering 3 ft.");
+                    drainBattery(30);
+                    
+                    break;
+                    
+                    
+            }
+        }
+    }
+    
+    
+    public void intro(){
+        System.out.println(stars);
+        System.out.println("\nDroid Simulator\n"); //Title
+        System.out.println(stars);
+        System.out.println("\nWelcome to the Droid Simulator. This program is meant to replicate the customization and operation of a real life droid.\n"); //Explanation of the program
+        System.out.println(stars);
+        
+    }
+    
+    
+    
+    public static void main(String[] args){
+        
+        Droid ryan = new Droid();
+        ryan.clear();
+        ryan.intro();
+        ryan.activate();
+        ryan.chargeBattery(5);
+        ryan.hover(1);
+        ryan.chargeBattery(1);
+        
+        
+    }
+}   
+
+    
